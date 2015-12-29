@@ -1,25 +1,18 @@
 class Robot
+ attr_reader :name
 
-
-  def name
-    n = prefix
-    s = suffix
-    a = (n+s).join
-    @name = a
+  def initialize
+    generate
   end
 
-  def prefix
-    alphabet = [*'A'..'Z']
-    alphabet.sample(2)
-  end
-
-  def suffix
-    num = [*'0'..'9']
-    num.sample(3)
+  def generate
+    pre = [*'A'..'Z'].sample(2).join
+    suff = rand(100..999).to_s
+    @name = pre + suff
   end
 
   def reset
-    @name = nil
+    generate
   end
 
 end
